@@ -8,6 +8,12 @@ from django.core.mail import get_connection
 def home(request):
     return render(request, "index.html", {})
 
+def about(request):
+    return render(request, "portfolio-details.html", {})
+
+def home2(request):
+    return render(request, "inner-page.html", {})
+
 @csrf_exempt
 def send_email(request):
     if request.method == "POST":

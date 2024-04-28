@@ -1,0 +1,117 @@
+virtualenv venv
+
+venv\Scripts\activate
+
+pip install -r requirements.txt
+
+pip freeze > requirements.txt
+
+pip install django
+pip install djangorestframework
+
+django-admin startproject dars .
+
+django-admin startapp app
+
+python manage.py runserver
+
+BlackHatHacker001
+
+#Migrations
+python manage.py makemigrations
+python manage.py migrate
+
+python manage.py createsuperuser
+python manage.py runserver
+
+settings.py:
+import os
+TEMPLATE = os.path.join(BASE_DIR, 'templates/')
+'DIRS': [TEMPLATE],
+
+STATIC_URL = 'static/'
+STATIC_DIR = os.path.join(BASE_DIR, 'static')
+STATIC_ROOT = os.path.join(BASE_DIR, '')
+STATICFILES_DIRS = ('static',)
+MEDIA_URL = "media/"
+MEDIA_ROOT = BASE_DIR / "media/"
+
+
+urls.py:
+from django.contrib import admin
+from django.urls import path, include
+from django.conf import settings
+from django.conf.urls.static import static
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('', include('app.urls'))
+]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+views.py:
+from .models import *
+
+def home(context):
+    return render(context, "{% url 'home' %}", {})
+
+
+app/urls.py:
+from django.urls import path
+from .views import *
+
+urlpatterns = [
+    path('', home, name='home'),
+]
+
+for email sending (settings.py):
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'mamadaminov001@gmail.com'  # Replace with your Gmail email address
+EMAIL_HOST_PASSWORD = 'yxjg gbta qach wwei'
+
+
+
+html:
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+
+
+</body>
+</html>
+
+
+
+
+pip install appdirs
+pip install asgiref
+pip install certifi
+pip install charset-normalizer
+pip install distlib
+pip install Django
+pip install django-admin-thumbnails
+pip install django-storages
+pip install filelock
+pip install idna
+pip install Pillow
+pip install psycopg2
+pip install python-decouple
+pip install pytz
+pip install requests
+pip install six
+pip install sqlparse
+pip install typing-extensions
+pip install tzdata
+pip install urllib3
+pip install whitenoise
+
+
+
